@@ -1,6 +1,9 @@
 # FlashSpelling
+This project is the sole property of Hayden Kreuter. It is available to view as part of my portfolio and should not be copied, reproduced or used for professional purposes 
+
 Flash Spelling is an IOS App designed to help kids learn spelling words and
 study for spelling tests
+
 
 Features:
 - Create word lists and record your own pronunciation or use automatic pronunciation 
