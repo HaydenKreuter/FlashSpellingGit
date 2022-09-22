@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TestHistoryEntity" representedClassName="TestHistoryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pdf" optional="YES" attributeType="Binary"/>
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="wordListEntity" maxCount="1" deletionRule="Nullify" destinationEntity="WordListEntity" inverseName="testHistory" inverseEntity="WordListEntity"/>
+    </entity>
+    <entity name="TestInProgressEntity" representedClassName="TestInProgressEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currentWordIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wordsEntered" optional="YES" attributeType="Binary"/>
+        <relationship name="wordListEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordListEntity" inverseName="testInProgress" inverseEntity="WordListEntity"/>
+    </entity>
+    <entity name="WordEntity" representedClassName="WordEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="mastery" optional="YES" attributeType="Double" defaultValueString="20" usesScalarValueType="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recordingPath" optional="YES" attributeType="String"/>
+        <attribute name="wordName" optional="YES" attributeType="String"/>
+        <relationship name="wordFoundInPuzzle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordSearchPuzzleEntity" inverseName="wordFound" inverseEntity="WordSearchPuzzleEntity"/>
+        <relationship name="wordInPuzzle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordSearchPuzzleEntity" inverseName="wordsInPuzzle" inverseEntity="WordSearchPuzzleEntity"/>
+        <relationship name="wordListEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordListEntity" inverseName="wordEntity" inverseEntity="WordListEntity"/>
+        <relationship name="wordPosition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordPositionEntity" inverseName="word" inverseEntity="WordPositionEntity"/>
+    </entity>
+    <entity name="WordListEntity" representedClassName="WordListEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="baselineTestOptOut" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="baselineTestScore" attributeType="Double" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dayStartDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dayStartMastery" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="dayWordsPracticed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="listName" optional="YES" attributeType="String"/>
+        <attribute name="percentImprovement" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="testDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="wordsStudied" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="testHistory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TestHistoryEntity" inverseName="wordListEntity" inverseEntity="TestHistoryEntity"/>
+        <relationship name="testInProgress" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TestInProgressEntity" inverseName="wordListEntry" inverseEntity="TestInProgressEntity"/>
+        <relationship name="wordEntity" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordEntity" inverseName="wordListEntity" inverseEntity="WordEntity"/>
+        <relationship name="wordSearchPuzzle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordSearchPuzzleEntity" inverseName="wordList" inverseEntity="WordSearchPuzzleEntity"/>
+    </entity>
+    <entity name="WordPositionEntity" representedClassName="WordPositionEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="direction" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="x" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="y" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="wordPosition" inverseEntity="WordEntity"/>
+    </entity>
+    <entity name="WordSearchPuzzleEntity" representedClassName="WordSearchPuzzleEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="crosswordLetters" optional="YES" attributeType="String"/>
+        <attribute name="lettersInrow" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="wordFound" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="wordFoundInPuzzle" inverseEntity="WordEntity"/>
+        <relationship name="wordList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordListEntity" inverseName="wordSearchPuzzle" inverseEntity="WordListEntity"/>
+        <relationship name="wordsInPuzzle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="wordInPuzzle" inverseEntity="WordEntity"/>
+    </entity>
+    <elements>
+        <element name="TestHistoryEntity" positionX="-153" positionY="-396" width="128" height="89"/>
+        <element name="TestInProgressEntity" positionX="-361.1555786132812" positionY="-299.5883178710938" width="128" height="88"/>
+        <element name="WordEntity" positionX="9.33349609375" positionY="-502.7982788085938" width="128" height="163"/>
+        <element name="WordListEntity" positionX="-187.9198608398438" positionY="-602.233154296875" width="128" height="239"/>
+        <element name="WordPositionEntity" positionX="248.4071655273437" positionY="-474.21044921875" width="128" height="103"/>
+        <element name="WordSearchPuzzleEntity" positionX="64.38092041015625" positionY="-227.4489440917969" width="128" height="118"/>
+    </elements>
+</model>

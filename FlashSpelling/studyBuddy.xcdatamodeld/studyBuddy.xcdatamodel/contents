@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
+        <attribute name="mastery" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recordingPath" optional="YES" attributeType="String"/>
+        <attribute name="wordName" optional="YES" attributeType="String"/>
+        <relationship name="wordList" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WordList" inverseName="word" inverseEntity="WordList"/>
+    </entity>
+    <entity name="WordList" representedClassName="WordList" syncable="YES" codeGenerationType="class">
+        <attribute name="caseSensitive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="listName" optional="YES" attributeType="String"/>
+        <attribute name="testDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="word" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="wordList" inverseEntity="Word"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="-54" positionY="18" width="128" height="118"/>
+        <element name="WordList" positionX="-281.30078125" positionY="-85.353515625" width="128" height="118"/>
+    </elements>
+</model>
