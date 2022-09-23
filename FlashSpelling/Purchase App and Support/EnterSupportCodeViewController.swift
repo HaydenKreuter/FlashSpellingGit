@@ -75,10 +75,8 @@ class EnterSupportCodeViewController: UIViewController {
     
     // [code: free month extension]
     var codeDictionary: [String: Int] = [
-        "cm948mj8": 30,
-        "ms2xg6k2": 90,
-        "phyecvhn": 180,
-        "y5ibqyj2": -1
+        "12345678": 30 // git hub only, not a live code
+
     ]
 
     
